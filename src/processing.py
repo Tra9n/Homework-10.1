@@ -1,7 +1,7 @@
-def filter_by_state(library: list, state="EXECUTED") -> list:
+def filter_by_state(library: list, state: str = "EXECUTED") -> list:
     """Функция возвращает новый список словарей,
-     содержащий только те словари,
-     у которых ключ state соответствует указанному значению.
+    содержащий только те словари,
+    у которых ключ state соответствует указанному значению.
     """
     new_library = []
     for word in library:
