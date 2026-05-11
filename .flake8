@@ -2,7 +2,7 @@
 # Игнорируемые ошибки (например, длинные строки)
 ignore = E203, W503
 # Максимальная длина строки
-max-line-length = 119
+max-line-length = 79
 # Папки, которые нужно игнорировать
 exclude = .git,__pycache__,docs/source/conf.py,old,build,dist,venv,.venv
 # Максимальная сложность функций
