@@ -3,7 +3,6 @@ import pytest
 from src.processing import filter_by_state, sort_by_date
 
 
-# Тест для filter_by_state
 def test_filter_by_state_executed(library: list, expected_executed: list) -> None:
     """Тест фильтрации по статусу EXECUTED"""
     assert filter_by_state(library, "EXECUTED") == expected_executed
@@ -24,13 +23,11 @@ def test_filter_by_state_empty_list() -> None:
     assert filter_by_state([], "EXECUTED") == []
 
 
-# Тесты sort_by_date
 
 
 @pytest.mark.parametrize(
     "list_dir, descending, expected",
     [
-        # Сортировка по убыванию
         (
             [
                 {"id": 41428829, "state": "EXECUTED", "date": "2019-07-03T18:35:29.512364"},
@@ -58,7 +55,6 @@ def test_filter_by_state_empty_list() -> None:
                 {"id": 41428831, "state": "EXECUTED", "date": "2019-08-01T10:00:00.000000"},
             ],
         ),
-        # Одинаковые даты
         (
             [
                 {"id": 1, "state": "EXECUTED", "date": "2019-07-03T18:35:29.512364"},
@@ -72,9 +68,7 @@ def test_filter_by_state_empty_list() -> None:
                 {"id": 3, "state": "EXECUTED", "date": "2019-07-03T18:35:29.512364"},
             ],
         ),
-        # Пустой список
         ([], True, []),
-        # Один элемент
         (
             [{"id": 41428829, "state": "EXECUTED", "date": "2019-07-03T18:35:29.512364"}],
             True,
@@ -83,5 +77,4 @@ def test_filter_by_state_empty_list() -> None:
     ],
 )
 def test_sort_by_date(list_dir: list, descending: bool, expected: str) -> None:
-    """Тест сортировки списка словарей по дате (ISO формат)"""
     assert sort_by_date(list_dir, descending) == expected
