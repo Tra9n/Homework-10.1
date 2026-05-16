@@ -2,9 +2,6 @@ import pytest
 
 from src.masks import get_mask_account, get_mask_card_number
 
-# Тест для get_mask_card_number
-
-
 @pytest.mark.parametrize(
     "num,exp",
     [
@@ -21,9 +18,6 @@ def test_card_valid(num: str, exp: str) -> None:
 def test_card_invalid(num: str) -> None:
     with pytest.raises(ValueError):
         get_mask_card_number(num)
-
-
-# Тест для get_mask_account
 
 
 @pytest.mark.parametrize(
