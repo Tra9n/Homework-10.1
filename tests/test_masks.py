@@ -1,6 +1,9 @@
+from typing import Union
+
 import pytest
 
 from src.masks import get_mask_account, get_mask_card_number
+
 
 @pytest.mark.parametrize(
     "num,exp",
@@ -28,7 +31,7 @@ def test_card_invalid(num: str) -> None:
         (73654108430135874305, "**4305"),
     ],
 )
-def test_account_valid(num: [str, int], exp: str) -> None:
+def test_account_valid(num: Union[str, int], exp: str) -> None:
     """Тест корректных номеров счетов"""
     assert get_mask_account(num) == exp
 

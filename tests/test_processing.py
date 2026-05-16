@@ -23,8 +23,6 @@ def test_filter_by_state_empty_list() -> None:
     assert filter_by_state([], "EXECUTED") == []
 
 
-
-
 @pytest.mark.parametrize(
     "list_dir, descending, expected",
     [

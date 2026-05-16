@@ -3,7 +3,6 @@ import pytest
 from src.widget import get_date, mask_account_card
 
 
-
 @pytest.mark.parametrize(
     "value, expected",
     [
@@ -31,7 +30,6 @@ def test_mask_account_card_invalid(value: str, expected_message: str) -> None:
     """Проверяем, что функция выбрасывает ValueError"""
     with pytest.raises(ValueError, match=expected_message):
         mask_account_card(value)
-
 
 
 @pytest.mark.parametrize(

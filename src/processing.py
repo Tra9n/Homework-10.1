@@ -15,5 +15,3 @@ def sort_by_date(list_dir: list, descending: bool = True) -> list:
     отсортированный по дате (date).
     """
     return sorted(list_dir, key=lambda k: k["date"], reverse=descending)
-
-
