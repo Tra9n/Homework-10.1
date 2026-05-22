@@ -1,3 +1,5 @@
+import pytest
+
 from src.generators import card_number_generator, filter_by_currency, transaction_descriptions
 
 
@@ -54,18 +56,50 @@ def test_filter_by_currency(expected_filter_by_currency: list) -> None:
     }
 
 
-def test_transaction_descriptions(expected_filter_by_currency: list) -> None:
-    test_description = transaction_descriptions(expected_filter_by_currency)
-    assert next(test_description) == "Перевод организации"
-    assert next(test_description) == "Перевод со счета на счет"
-    assert next(test_description) == "Перевод со счета на счет"
-    assert next(test_description) == "Перевод с карты на карту"
+@pytest.mark.parametrize(
+    "transactions, expected_descriptions",
+    [
+        (
+            [
+                {"description": "Перевод организации"},
+                {"description": "Перевод со счета на счет"},
+                {"description": "Перевод со счета на счет"},
+                {"description": "Перевод с карты на карту"},
+            ],
+            [
+                "Перевод организации",
+                "Перевод со счета на счет",
+                "Перевод со счета на счет",
+                "Перевод с карты на карту",
+            ],
+        ),
+    ],
+)
+def test_transaction_descriptions(transactions: list, expected_descriptions: list) -> None:
+    test_description = transaction_descriptions(transactions)
+
+    for expected in expected_descriptions:
+        assert next(test_description) == expected
 
 
-def test_card_number_generator() -> None:
-    card_number = card_number_generator(5325437241823135, 5325621345823135)
-    assert next(card_number) == "5325 4372 4182 3135"
-    assert next(card_number) == "5325 4372 4182 3136"
-    assert next(card_number) == "5325 4372 4182 3137"
-    assert next(card_number) == "5325 4372 4182 3138"
-    assert next(card_number) == "5325 4372 4182 3139"
+@pytest.mark.parametrize(
+    "start, end, expected_numbers",
+    [
+        (
+            5325437241823135,
+            5325621345823135,
+            [
+                "5325 4372 4182 3135",
+                "5325 4372 4182 3136",
+                "5325 4372 4182 3137",
+                "5325 4372 4182 3138",
+                "5325 4372 4182 3139",
+            ],
+        )
+    ],
+)
+def test_card_number_generator(start: int, end: int, expected_numbers: list) -> None:
+    card_number = card_number_generator(start, end)
+
+    for expected in expected_numbers:
+        assert next(card_number) == expected

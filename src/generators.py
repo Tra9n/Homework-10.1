@@ -12,7 +12,7 @@ def filter_by_currency(transactions: list, currency: Literal["USD", "RUB"]) -> I
             yield transact
 
 
-def transaction_descriptions(transactions: list) -> Iterator:
+def transaction_descriptions(transactions: list) -> Generator:
     """
     Генератор принимает список словарей с транзакциями и
     возвращает описание каждой операции по очереди.
