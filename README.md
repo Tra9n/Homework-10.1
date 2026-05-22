@@ -17,7 +17,7 @@ processing.py: функции для фильтрации и сортировк�
 
 widget.py: функции для обработки и преобразования данных.
 
-
+generators.py функции-генераторы для обработки банковских транзакций
 
 		• tests/: содержит тесты для модулей проекта.
 
@@ -28,7 +28,7 @@ test_processing.py: тесты для функций из processing.py.
 
 test_widget.py: тесты для функций из widget.py.
 
-
+test_generators.py: тесты для фуекций из generators.py
 
 
 ## Установка и запуск тестов
@@ -36,7 +36,7 @@ test_widget.py: тесты для функций из widget.py.
 
 		1. Клонируйте репозиторий:
 
-git clone <URL репозитория>
+git clone <git@github.com:Tra9n/Homework-10.1.git>aaaaa
 
 
 		2. Установите необходимые зависимости:
