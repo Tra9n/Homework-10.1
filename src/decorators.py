@@ -7,6 +7,7 @@ def log(filename: Optional[str] = None) -> Callable:
     Декоратор принимает необязательный аргумент filename,
     который определяет, куда будут записываться логи (в файл или в консоль).
     """
+
     def decorator(func: Callable) -> Callable:
         @wraps(func)
         def wrapper(*args: tuple, **kwargs: dict) -> Any:
