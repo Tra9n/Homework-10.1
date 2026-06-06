@@ -17,7 +17,9 @@ processing.py: функции для фильтрации и сортировк�
 
 widget.py: функции для обработки и преобразования данных.
 
-generators.py функции-генераторы для обработки банковских транзакций
+generators.py функции-генераторы для обработки банковских транзакцийб.
+
+decorators.py Декоратор принимает необязательный аргумент filename, который определяет, куда будут записываться логи (в файл или в консоль).
 
 		• tests/: содержит тесты для модулей проекта.
 
@@ -28,15 +30,16 @@ test_processing.py: тесты для функций из processing.py.
 
 test_widget.py: тесты для функций из widget.py.
 
-test_generators.py: тесты для фуекций из generators.py
+test_generators.py: тесты для функций из generators.py
 
+test_decorators.py : тесты для декоратора из decorators.py
 
 ## Установка и запуск тестов
 
 
 		1. Клонируйте репозиторий:
 
-git clone <git@github.com:Tra9n/Homework-10.1.git>aaaaa
+git clone <git@github.com:Tra9n/Homework-10.1.git>
 
 
 		2. Установите необходимые зависимости:
