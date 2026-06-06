@@ -3,7 +3,7 @@ import os
 import requests
 from dotenv import load_dotenv
 
-load_dotenv()
+load_dotenv(".env")
 API_KEY = os.getenv("API_KEY")
 
 
@@ -36,7 +36,7 @@ def get_operations(transaction: dict) -> float:
         return amount
     if currency_code in ("USD", "EUR"):
         try:
-            url = "https://api.apilayer.com/exchangerates_data/latest"
+            url = "https://api.apilayer.com/exchangerates_data/live"
             headers = {"apikey": API_KEY} if API_KEY else {}
             params = {"base": currency_code, "symbols": "RUB"}
 
