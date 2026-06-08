@@ -1,7 +1,8 @@
 import json
+
 from unittest.mock import mock_open, patch
 
-from src.external_api import get_operations, load_operations
+from src.utils import get_operations, load_operations
 
 
 def test_load_operations_success() -> None:
