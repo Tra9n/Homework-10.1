@@ -19,9 +19,11 @@ widget.py: функции для обработки и преобразован�
 
 generators.py функции-генераторы для обработки банковских транзакцийб.
 
-decorators.py Декоратор принимает необязательный аргумент filename, который определяет, куда будут записываться логи (в файл или в консоль).
+decorators.py декоратор принимает необязательный аргумент filename, который определяет, куда будут записываться логи (в файл или в консоль).
 
-		• tests/: содержит тесты для модулей проекта.
+operations.py функции для считывания финансовых операций из Excel и Csv
+		
+        • tests/: содержит тесты для модулей проекта.
 
 
 test_masks.py: тесты для функций из masks.py.
@@ -33,6 +35,8 @@ test_widget.py: тесты для функций из widget.py.
 test_generators.py: тесты для функций из generators.py
 
 test_decorators.py : тесты для декоратора из decorators.py
+
+test_operations.py : тесты для фуекций из operations.py
 
 ## Установка и запуск тестов
 
@@ -46,7 +50,10 @@ git clone <git@github.com:Tra9n/Homework-10.1.git>
 
 pip install -r requirements.txt
 
+poetry add pandas
 
-		3. Запустите тесты:
+pip install openpyxl
+		
+        3. Запустите тесты:
 
 pytest
