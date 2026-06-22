@@ -2,31 +2,20 @@ from src.masks import get_mask_account, get_mask_card_number
 
 
 def mask_account_card(card_namber: str) -> str:
-    """Функция которая умеет обрабатывать информацию как о картах, так и о счетах."""
-    card_namber = card_namber.strip()
-
-    if not card_namber:
-        raise ValueError("Неверный номер карты или счёта")
-
-    last_20 = card_namber[-20:]
-
-    if last_20.isdigit() and len(last_20) == 20:
-        prefix = card_namber[:-20].strip()
-        if prefix.lower() in ("счет", "счёт"):
-            return f"Счет {get_mask_account(last_20)}"
+    """функция которая умеет обрабатывать информацию как о картах, так и о счетах."""
+    card_namber_str = str(card_namber).replace(" ", "")
+    if "счет" in card_namber_str.lower():
+        if len(card_namber_str) >= 20 and card_namber_str[-20:].isdigit():
+            return f"Счет {get_mask_account(card_namber_str[-20:])}"
         else:
-            raise ValueError("Неверный номер карты или счёта")
-
-    last_16 = card_namber[-16:]
-
-    if last_16.isdigit() and len(last_16) == 16:
-        card_name = card_namber[:-16].strip()
-        if card_name and len(card_name) > 0:
-            return f"{card_name} {get_mask_card_number(last_16)}"
+            return "Вы ввели неправильный номер счета"
+    elif card_namber_str[-16:].isdigit():
+        if len(card_namber_str) >= 16:
+            return f"{card_namber[:-16]}{get_mask_card_number(card_namber_str[-16:])}"
         else:
-            raise ValueError("Неверный номер карты или счёта")
-
-    raise ValueError("Неверный номер карты или счёта")
+            return "Вы ввели неправильный номер карты"
+    else:
+        return "Вы ввели неправильный номер карты"
 
 
 def get_date(time_card: str) -> str:
