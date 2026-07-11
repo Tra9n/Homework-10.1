@@ -9,7 +9,7 @@ def get_transactions_from_csv(transactions_file: str = "data/transactions.csv") 
     try:
         with open(transactions_file, "r", encoding="utf-8") as csvfile:
             reader = csv.DictReader(csvfile, delimiter=";")
-            return list(reader)  # ← Убрал цикл for
+            return list(reader)
     except FileNotFoundError as e:
         print(e)
         return []

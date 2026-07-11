@@ -18,6 +18,10 @@ logger.addHandler(file_handler)
 
 def load_operations(file_path: str = "data/operations.json") -> dict:
     """Загружает транзакции из JSON-файла"""
+    if file_path == "":
+        utils_dir = os.path.dirname(os.path.abspath(__file__))
+        file_path = os.path.join(utils_dir, "..", "data", "operations.json")
+        logger.info("Путь до файла json")
     try:
         logger.info(f"Загружаем данные из файла {file_path}")
         with open(file_path, "r", encoding="utf-8") as f:
@@ -71,3 +75,10 @@ def get_operations(transaction: dict) -> float:
             return 0.0
 
     return 0.0
+
+
+def process_bank_search(transactions: list[dict], search_string: str) -> list[dict]:
+    """Функция для фильтрации транзакций по описанию"""
+    if not search_string:
+        return transactions
+    return [t for t in transactions if search_string.lower() in t.get("description", "").lower()]

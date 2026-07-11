@@ -7,9 +7,13 @@ def filter_by_currency(transactions: list, currency: Literal["USD", "RUB"]) -> I
     который поочередно выдает транзакции,
     где валюта операции соответствует заданной
     """
-    for transact in transactions:
-        if transact["operationAmount"]["currency"]["code"] == currency:
-            yield transact
+    for i in transactions:
+        if i.get("operationAmount"):
+            code = i["operationAmount"]["currency"]["code"]
+        elif i.get("currency_code"):
+            code = i.get("currency_code")
+        if code == currency:
+            yield i
 
 
 def transaction_descriptions(transactions: list) -> Generator:
